@@ -4,7 +4,7 @@
     "url": "s5phub.copernicus.eu",
     "username": "s5pguest",
     "password": "s5pguest",
-    "range":"ingestiondate:[NOW-7DAYS TO NOW]",
+    "days": 7,
     "products": {
         "L2__SO2___": {
             "table": "sulfurdioxide",

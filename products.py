@@ -1,7 +1,7 @@
 import json
 import os
 
-def _config():
+def config():
     directory = os.getcwd()
     f = open(directory + "/sentinel5P.json")
     config = json.load(f)
@@ -10,10 +10,10 @@ def _config():
     return config
 
 # get product to select dataset
-def get_config(product):
+def product_config(product):
 
     result = None
-    config = None
+    pc = None
 
     if (product == 'CO'):
         result = 'L2__CO____'
@@ -31,6 +31,6 @@ def get_config(product):
         result = 'L2__AER_AI'
 
     if (product is not None):
-        config = _config()["products"][result]
+        pc = config()["products"][result]
 
-    return result, config
+    return result, pc
