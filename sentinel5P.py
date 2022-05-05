@@ -62,13 +62,12 @@ def sentinel5P_geojson(product, lat, lng, start, end, meters):
 @app.route('/s5p/job', methods=['POST'])
 def sentinel5P():
 
-    print('hello')
     content_type = request.headers.get('Content-Type')
     if (content_type == 'application/json'):
         
         body = request.json
         
-        if None not in (body["product"], 
+        if None not in (body["pollution"], 
                         body["bbox"]):
             start = 0
             end = False
@@ -76,13 +75,14 @@ def sentinel5P():
             response = {
                 "status": [],
                 "error": [],
-                "links": []
+                "links": [],
+                "json": []
             }
 
             cfg = config()
             
-            product, pconfig =  product_config(body["product"])
-            print(pconfig)
+            product, pconfig =  product_config(body["pollution"])
+            
             bbox = (float(body["bbox"][1]), float(body["bbox"][0]),
                     float(body["bbox"][3]), float(body["bbox"][2]))
             range = copernicus.range(cfg["days"])
@@ -105,10 +105,9 @@ def sentinel5P():
                     "product": product,
                     "platform": cfg["platform"],
                     "description": pconfig["description"],
-                    "crs": cfg["crs"]
+                    "crs": cfg["crs"],
+                    "table": pconfig["table"]
                 }
-
-                print(params)
 
                 # get url datasets
                 result = copernicus.datasets(params)
@@ -116,7 +115,7 @@ def sentinel5P():
                 response["status"].append(result["status"])
                 response["error"].append(result["error"])
                 response["links"].append(result["datasets"])
-
+                
                 if (len(result["datasets"]) > 0):
                     start += 101
                 else:
