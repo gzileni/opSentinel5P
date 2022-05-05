@@ -1,0 +1,47 @@
+{
+    "platform": "Sentinel-5 Precursor",
+    "crs": "EPSG:4326",
+    "url": "s5phub.copernicus.eu",
+    "username": "s5pguest",
+    "password": "s5pguest",
+    "days": 7,
+    "products": {
+        "L2__SO2___": {
+            "table": "sulfurdioxide",
+            "variables": [],
+            "description": "Sulfur Dioxide (SO2)",
+            "api": "SO2"
+        },
+        "L2__NO2___": {
+            "name": "L2__NO2___",
+            "table": "nitrogendioxide",
+            "variables": [],
+            "description": "Nitrogen Dioxide (NO2)",
+            "api": "NO2"
+        },
+        "L2__HCHO__": {
+            "table": "formaldehyde",
+            "variables": [],
+            "description": "Formaldehyde (HCHO)",
+            "api": "HCHO"
+        },
+        "L2__CO____": {
+            "table": "carbonmonoxide",
+            "description": "Carbon Monoxide (CO)",
+            "api": "CO",
+            "variables": []
+        },
+        "L2__CH4___": {
+            "table": "methane",
+            "variables": [],
+            "description": "Methane (CH4)",
+            "api": "CH4"
+        },
+        "L2__AER_AI": {
+            "table": "aerosol",
+            "variables": [],
+            "description": "UV Aerosol Index",
+            "api": "AER"
+        }
+    }
+}
